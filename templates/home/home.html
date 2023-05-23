@@ -129,71 +129,27 @@
       <h2>Our Top Mentors</h2>
       <div class="mentors_info">
         <ul class="mentor_cards">
+
+          {% for mentor in mentors %}
+
           <li>
             <a href="" class="mentor_card">
-              <img src="images/image/chetan.jpg" class="mentor_card__image" alt="" />
+              <img src="{{ mentor.profile_pic.url }}" class="mentor_card__image" alt="" />
               <div class="mentor_card__overlay">
                 <div class="mentor_card__header">
                   <svg class="mentor_card__arc" xmlns="http://www.w3.org/2000/svg">
                     <path /></svg>
                   <div class="mentor_card__header-text">
-                    <h3 class="mentor_card__title">Chetan Sharma</h3>
+                    <h3 class="mentor_card__title">{{ mentor.first_name }} {{ mentor.last_name }}</h3>
                   </div>
                 </div>
-                <p class="mentor_card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-                  blanditiis?</p>
+                <p class="mentor_card__description">{{ mentor.bio }}</p>
               </div>
             </a>
           </li>
-          <li>
-            <a href="" class="mentor_card">
-              <img src="images/image/chirag.jpg" class="mentor_card__image" alt="" />
-              <div class="mentor_card__overlay">
-                <div class="mentor_card__header">
-                  <svg class="mentor_card__arc" xmlns="http://www.w3.org/2000/svg">
-                    <path /></svg>
-                  <div class="mentor_card__header-text">
-                    <h3 class="mentor_card__title">Chirag</h3>
-                  </div>
-                </div>
-                <p class="mentor_card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-                  blanditiis?</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="" class="mentor_card">
-              <img src="images/image/dk.jpg  " class="mentor_card__image" alt="" />
-              <div class="mentor_card__overlay">
-                <div class="mentor_card__header">
-                  <svg class="mentor_card__arc" xmlns="http://www.w3.org/2000/svg">
-                    <path /></svg>
-                  <div class="mentor_card__header-text">
-                    <h3 class="mentor_card__title">Divyanshu Khandelwal</h3>
-                    <!-- <span class="mentor_card__tagline">Lorem ipsum dolor sit amet consectetur</span>             -->
-                  </div>
-                </div>
-                <p class="mentor_card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-                  blanditiis?</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="" class="mentor_card">
-              <img src="images/image/amohg.jpg" class="mentor_card__image" alt="" />
-              <div class="mentor_card__overlay">
-                <div class="mentor_card__header">
-                  <svg class="mentor_card__arc" xmlns="http://www.w3.org/2000/svg">
-                    <path /></svg>
-                  <div class="mentor_card__header-text">
-                    <h3 class="mentor_card__title">Amogh Malviya</h3>
-                  </div>
-                </div>
-                <p class="mentor_card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-                  blanditiis?</p>
-              </div>
-            </a>
-          </li>
+
+          {% endfor %}
+
         </ul>
       </div>
     </div>
@@ -346,10 +302,6 @@
       </div>
     </div>
   </footer>
-
-
-
-
 
   <!-- ------------------------Light Mode/ Dark Mode-------------------------- -->
 

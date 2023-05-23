@@ -1,8 +1,16 @@
 from django.shortcuts import render, redirect
+from accounts.models import Mentor
 
 
 def home(request):
-    return render(request, 'home/home.html')
+    
+    mentors = Mentor.objects.filter(ratings__gte=4.5)
+    
+    parameters = {
+        'mentors': mentors,
+    }
+    
+    return render(request, 'home/home.html', parameters)
 
 def courses(request):
     return render(request, 'courses.html')

@@ -10,6 +10,7 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(Mentor)
 class MentorAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'mobile_number')
+    exclude = ('password', 'last_login', 'is_superuser', 'groups', 'user_permissions', 'is_staff', 'is_active')
     
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
