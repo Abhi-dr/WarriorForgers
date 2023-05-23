@@ -39,3 +39,4 @@ def student_login(request):
             return redirect('student_login')
     
     return render(request, 'accounts/student_login.html')
+

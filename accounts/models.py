@@ -22,7 +22,9 @@ class Student(User):
          
     
     mobile_number = models.CharField(max_length=10, blank=True)
+    
     registration_score = models.IntegerField(default=0)
+    
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=10, blank=True, choices=gender_choices)
     highschool_score = models.IntegerField(default=0)

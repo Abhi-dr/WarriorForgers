@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-def home(request):
+@login_required(login_url='/accounts/student_login/')
+def home(request):   
     return render(request, 'dashboard/home.html')
