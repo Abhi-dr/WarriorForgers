@@ -5,9 +5,11 @@ from accounts.models import Mentor
 def home(request):
     
     mentors = Mentor.objects.filter(ratings__gte=4.5)
+    student = request.user
     
     parameters = {
         'mentors': mentors,
+        'student': student
     }
     
     return render(request, 'home/home.html', parameters)

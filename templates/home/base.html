@@ -61,23 +61,32 @@
     <!-- -------------------------------------Profile Dropdown---------------------------------------------- -->
 
     <div id="profile_dropdown" class="profile_dropdown light-mode">
+
+        {% if student.is_authenticated %}
+
+        <div class="user_profile">
+            <div class="profile_dropdown_item">
+                <img src="../../static/img/team/chirag.jpg" alt="Profile" class="user_profile_img">
+                <a href="#" class="dashboard">Your Dashboard</a>
+            </div>
+            <div class="profile_dropdown_item">
+                <a href="{% url 'logout' %}" class="logout">Logout</a>
+            </div>
+        </div>
+
+        {% else %}
+
         <div class="login_register">
             <div class="profile_dropdown_item">
                 <a href="Register Form/index.html" class="sign-up">Sign Up</a>
             </div>
             <div class="profile_dropdown_item">
-                <a href="Login Form/index.html" class="sign-in">Login</a>
+                <a href="{% url 'login' %}" class="sign-in">Login</a>
             </div>
         </div>
-        <!-- <div class="user_profile">
-      <div class="profile_dropdown_item">
-        <img src="images/profille.webp" alt="Profile" class="user_profile_img">
-        <a href="#" class="dashboard">Your Dashboard</a>
-      </div>
-      <div class="profile_dropdown_item">
-        <a href="#" class="logout">Logout</a>
-      </div>
-    </div> -->
+
+
+        {% endif %}
     </div>
 
 

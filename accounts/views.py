@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from accounts.models import Student, Mentor
+from django.contrib.auth.models import auth
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+
 
 def student_register(request):
     
@@ -25,18 +29,24 @@ def student_register(request):
     return render(request, 'accounts/student_register.html')
 
 
-def student_login(request):
+def login(request):
     
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
         
-        student = Student.objects.get(username=email)
+        student = auth.authenticate(username=email, password=password)
         
-        if student.check_password(password):
-            return redirect('dashboard')
+        if student is not None:
+            
+            auth.login(request, student)
+            return redirect('/dashboard')
         else:
-            return redirect('student_login')
+            return redirect('login')
     
     return render(request, 'accounts/student_login.html')
 
+@login_required(login_url='/accounts/login')
+def logout(request):
+    auth.logout(request)    
+    return redirect('login')

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +7,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Login/Register</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/css/style.css' %}">
+    <title>Login Here!</title>
 </head>
 
 <body>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="login" method="post">
+
+                {% csrf_token %}
+
                 <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Login Here</h1>
                 <div class="social-container">
                     <a href="#" class="social" id="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -20,9 +25,10 @@
                     <a href="#" class="social" id="linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for Login</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign In</button>
+                <input type="email" placeholder="Email" name="email"/>
+                <input type="password" placeholder="Password" name="password"/>
+                <button type="submit">Sign In</button>
+
             </form>
         </div>
         <div class="overlay-container">
@@ -46,7 +52,7 @@
         </p>
     </footer> -->
 
-    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="{% static 'js/accounts/typed.js' %}"></script>
 
     <script>
         const typedElement = document.querySelector('.typed');
@@ -54,10 +60,9 @@
 
         new Typed(typedElement, {
             strings: typedItems,
-            typeSpeed: 200,
+            typeSpeed: 40,
             loop: true
         });
-    </script>
     </script>
     <script src="https://kit.fontawesome.com/95a174de29.js" crossorigin="anonymous"></script>
 </body>
