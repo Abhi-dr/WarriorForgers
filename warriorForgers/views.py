@@ -19,5 +19,5 @@ def mentors(request):
     return render(request, 'mentors.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'home/about.html')
 

@@ -27,7 +27,7 @@
 
   <header>
     <div class="logo">
-      <a href="index.html"><img src="{% static 'img/home/logo.png' %}" alt="logo"></a>
+      <a href="{% url 'main_home' %}"><img src="{% static 'img/home/logo.png' %}" alt="logo"></a>
     </div>
     <!-- --------------------Light/Dark Mode------------------------------------- -->
     <nav class="navbar light-mode" id="navbar">
@@ -42,7 +42,7 @@
         <!-- <a href="Register Form/index.html" class="active">Sign Up</a>
         <a href="Login Form/index.html">Login</a> -->
         <img src="{% static 'img/home/profille.webp' %}" alt="Profile" class="profile" onclick="profile_drop()">
-        <a href="pages/about.html" class="nav_about">About US</a>
+        <a href="{% url 'main_about' %}" class="nav_about">About US</a>
         <!-- <a href="#">Contact</a> -->
         <a href="#ment">Mentors</a>
         <a href="#main-container">Courses</a>

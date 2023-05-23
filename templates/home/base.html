@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/mentor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/services.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/home/about.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home/about1.css' %}" />
+
+    <link rel="icon" href="{% static 'img/home/favicon.png' %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://rawcdn.githack.com/SochavaAG/example-mycode/master/_common/css/reset.css'>
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+</head>
+
+<body id="body" class="light-mode">
+    <!------------------------------------------------------------------HEADER----------------------------------------------- -->
+
+    <header>
+        <div class="logo">
+            <a href="{% url 'main_home' %}"><img src="{% static 'img/home/logo.png' %}" alt="logo"></a>
+        </div>
+        <!-- --------------------Light/Dark Mode------------------------------------- -->
+        <nav class="navbar light-mode" id="navbar">
+            <label class="toggle-switch">
+                <input type="checkbox" onchange="toggleMode()">
+                <span class="toggle-slider"><img src="{% static 'img/home/light.png' %}" class="light"><img
+                        src="{% static 'img/home/dark.png' %}" class="dark"></span>
+            </label>
+            <!-- -------------------------Light/dark mode end-------------------------------------- -->
+
+
+            <div class="nav-container">
+                <!-- <a href="Register Form/index.html" class="active">Sign Up</a>
+          <a href="Login Form/index.html">Login</a> -->
+                <img src="{% static 'img/home/profille.webp' %}" alt="Profile" class="profile" onclick="profile_drop()">
+                <a href="{% url 'main_about' %}" class="nav_about">About US</a>
+                <!-- <a href="#">Contact</a> -->
+                <a href="#ment">Mentors</a>
+                <a href="#main-container">Courses</a>
+                <a href="{% url 'main_home' %}">Home</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- -------------------------------------Profile Dropdown---------------------------------------------- -->
+
+    <div id="profile_dropdown" class="profile_dropdown light-mode">
+        <div class="login_register">
+            <div class="profile_dropdown_item">
+                <a href="Register Form/index.html" class="sign-up">Sign Up</a>
+            </div>
+            <div class="profile_dropdown_item">
+                <a href="Login Form/index.html" class="sign-in">Login</a>
+            </div>
+        </div>
+        <!-- <div class="user_profile">
+      <div class="profile_dropdown_item">
+        <img src="images/profille.webp" alt="Profile" class="user_profile_img">
+        <a href="#" class="dashboard">Your Dashboard</a>
+      </div>
+      <div class="profile_dropdown_item">
+        <a href="#" class="logout">Logout</a>
+      </div>
+    </div> -->
+    </div>
+
+
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+
+    <footer class="footer light-mode">
+        <div class="container-fluid" id="fcontainer-fluid">
+            <div class="frow">
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="f_ul">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#main-container">Courses</a></li>
+                        <li><a href="#ment">Mentors</a></li>
+                        <!-- <a href="#">Contact</a> -->
+                        <li><a href="#our-services">our-services</a></li>
+                        <li><a href="Login Form/index.html">Login</a></li>
+                        <li><a href="Register Form/index.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Website Links</h4>
+                    <ul class="f_ul">
+                        <li><a href="#" target="_blank">NDA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+
+                        <a href="https://bit.ly/37AhO1h" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://bit.ly/3qazRBE" target="_blank"><i class="fab  fa-twitter"></i></a>
+                        <a href="https://bit.ly/3JhLo9M" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://bit.ly/3MTE71T" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- ------------------------Light Mode/ Dark Mode-------------------------- -->
+
+
+    <!-- -------------------------------------------------------------------------------- -->
+    <script src="https://kit.fontawesome.com/ea78901d60.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="{% static 'js/home/script.js' %}"></script>
+
+</body>
+
+</html>
