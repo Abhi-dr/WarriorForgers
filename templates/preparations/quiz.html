@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/preparations/quiz.css' %}">
+  <title>Quiz</title>
+</head>
+
+<body>
+  <div class="logo">
+    <img src="{% static 'img/preparations/logo.png' %}" class="logo-img">
+  </div>
+
+  <div class="container">
+    <div class="timer-container">
+      <div class="timer">30</div>
+    </div>
+
+    <div class="instructions" id="question">
+
+      <form action="{% url 'next_question' %}" method="POST" id="quiz_form">
+        {% csrf_token %}
+        <h1>Question {{ question_index }} of {{ total_questions }}</h1>
+
+        <ul>
+
+          <li><b>Q{{ question_index }}.</b> {{ question.question }}</li>
+
+          <li> <input type="radio" name="{{ question.id }}" value="{{ question.option1 }}">{{ question.option1 }}</li>
+          <li> <input type="radio" name="{{ question.id }}" value="{{ question.option2 }}">{{ question.option2 }}</li>
+          <li> <input type="radio" name="{{ question.id }}" value="{{ question.option3 }}">{{ question.option3 }}</li>
+          <li> <input type="radio" name="{{ question.id }}" value="{{ question.option4 }}">{{ question.option4 }}</li>
+
+        </ul>
+
+        {% if question_index < total_questions %} <button class="btn1" type="submit" id="next">Next</button>
+          {% else %}
+          <button class="btn1" type="submit" id="next">Submit</button>
+          {% endif %}
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'js/preparations/quiz.js' %}"></script>
+
+</body>
+
+</html>

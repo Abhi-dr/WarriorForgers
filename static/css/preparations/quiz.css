@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background: url("https://static.vecteezy.com/system/resources/previews/006/762/413/original/army-stripes-camouflage-pattern-green-jungle-forest-battlefield-military-wide-background-free-vector.jpg")
+}
+
+/* add css to container as it is a box like structure havin instrusctions and 2 btns */
+.logo-img{
+    position: relative;
+    left: 40%;
+    margin: 20px 0;
+    width: 300px;
+    height: 100px;
+    border-radius: 3px;
+}
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 5px auto;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.826);
+    
+}
+.container h1{
+    text-align: center;
+    font-size: 30px;
+    color: #010000;
+    margin-bottom: 20px;
+}
+    .timer-container {
+        display: flex;
+        align-items: center;
+        float: right;
+        /* justify-content: center; */
+        height: 100px;
+    }
+    
+    .timer {
+        font-size: 25px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #363636;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 3px black;
+      }
+      
+ul{
+    margin: 40px 0;
+}
+ul li {
+    list-style: none;
+    padding: 5px;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #010000;
+}
+.btn{font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background: #022c86;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.3s;
+    margin-right: 55px;
+}
+.btn:hover{
+    background: #fff;
+    color: #555;
+    box-shadow: 0 0 10px #555;
+}
+.btn1{font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background: #022c86;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.3s;
+
+}
+.btn1:hover{
+    background: #fff;
+    color: #555;
+    box-shadow: 0 0 10px #555;
+}
+
+input[type="radio"]{
+    margin-right: 20px;
+    cursor: pointer;
+
+}

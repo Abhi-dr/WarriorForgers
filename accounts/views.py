@@ -49,4 +49,4 @@ def login(request):
 @login_required(login_url='/accounts/login')
 def logout(request):
     auth.logout(request)    
-    return redirect('login')
+    return redirect('/')

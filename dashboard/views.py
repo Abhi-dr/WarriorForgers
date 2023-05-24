@@ -10,4 +10,4 @@ def home(request):
         'student': student
     }
     
-    return render(request, 'dashboard/home.html', parameters)
+    return render(request, 'dashboard/skill_test_blurred.html', parameters)

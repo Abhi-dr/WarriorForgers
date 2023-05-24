@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('', views.home, name='dashboard'),
+    
+    path('regustration_quiz/', include('preparations.urls')),
        
 ]

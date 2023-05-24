@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Quiz Result</h1>
+
+<p>Correct answers: {{ correct_answers|length }}/{{ total_questions }}</p>
+<p>Success percentage: {{ success_percentage }}%</p>
+
+<h2>Questions answered incorrectly:</h2>
+<ul>
+  {% for question, correct_answer, user_answer in incorrect_answers %}
+    <li>
+      <strong>Question:</strong> {{ question.question }} - Your Answer: {{ user_answer }}
+      <br>
+      <strong>Correct Answer:</strong> {{ correct_answer }}
+    </li>
+  {% endfor %}
+</ul>
+
+<form method="POST" action="{% url 'reset_quiz' %}">
+  {% csrf_token %}
+  <button type="submit">Reset Quiz</button>
+</form>
+    
+</body>
+
+</html>
