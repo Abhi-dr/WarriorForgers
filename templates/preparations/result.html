@@ -118,8 +118,19 @@
     </h1>
 
     <div class="result-info">
-      <p class="success-percentage">Success Percentage: {{ success_percentage }}%</p>
-      <p>Correct Answers: {{ correct_answers|length }}/{{ total_questions }}</p>
+
+      {% if success_percentage < 75 %} 
+      
+      <h2 style="color: #c00;">Success Percentage: {{ success_percentage }}%</h2>
+
+        {% else %}
+
+        <h2 style="color: #27b62b;">Success Percentage: {{ success_percentage }}%</h2>
+
+        {% endif %}
+
+        <!-- <p class="success-percentage">Success Percentage: {{ success_percentage }}%</p> -->
+        <p>Correct Answers: {{ correct_answers|length }}/{{ total_questions }}</p>
     </div>
 
     <div class="incorrect-questions">
