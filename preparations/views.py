@@ -127,4 +127,13 @@ def reset_quiz(request):
 # ====================================== OLQ TEST START ======================================
 
 def olq_test(request):
-    return render(request, 'preparations/olq_test.html')
+    
+    user = request.user
+
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'preparations/olq_test.html', parameters)

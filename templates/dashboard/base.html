@@ -30,7 +30,10 @@
         <div class="locater">
             <span><a href="#" id="main">WarriorForgers</a></span>
             <span><img src="{% static 'img/dashboard/arrow.png' %}" id="arrow"></span>
-            <span id="navigator">Dashboard</span>
+            <span id="navigator">
+                {% block page %}
+                {% endblock %}
+            </span>
         </div>
     </header>
     <aside id="aside">
@@ -41,11 +44,11 @@
                 <li class="name">WarriorForgers</li>
                 <li class="nav-heading">My Account</li>
                 <ul class="sub-fields">
-                    <li><a href="" id="active">Dashboard</a></li>
+                    <li><a href="{% url 'dashboard' %}" id="active">Dashboard</a></li>
                     <li><a href="">My Profile</a></li>
                     <li><a href="">My Courses</a></li>
                     <li><a href="">My Mentors</a></li>
-                    <li><a href="">* Request A Meeting *</a></li>
+                    <li><a href="{% url 'request_meeting' %}">* Request A Meeting *</a></li>
                 </ul>
 
 

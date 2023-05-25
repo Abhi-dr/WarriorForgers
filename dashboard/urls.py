@@ -9,5 +9,7 @@ urlpatterns = [
     
     path('regustration_quiz/', include('preparations.urls')),
     path('preparations/', include('preparations.urls')),
+    
+    path('request_meeting', views.request_meeting, name='request_meeting'),
        
 ]

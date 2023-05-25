@@ -25,3 +25,16 @@ def home(request):
         return render(request, 'dashboard/home.html', parameters)
     
     
+# ================================ REQUEST MEETING ================================
+
+@login_required(login_url='/accounts/login')
+def request_meeting(request):
+        
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'dashboard/request_meeting.html', parameters)
