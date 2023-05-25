@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
+    <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/dashboard_mobile.css' %}">
+    <title>Welcome {{ student.first_name }}!</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <input type="text" class="search-bar" placeholder="Search" id="search-bar">
+            <img src="{{ student.profile_pic.url }}" class="profile-icon" alt="{% static 'img/dashboard/images.png' %}">
+            <span class="noti-txt">Notifications</span>
+            <span class="notification-icon"><i class="fa-sharp fa-solid fa-bell fa-xl"></i></span>
+            <span class="search-icon" onclick="show_search()" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="search-go" id="search-go"><i class="fa-solid fa-magnifying-glass-arrow-right"></i></span>
+            <span class="menu-icon" onclick="show_menu()"><i class="fa-solid fa-bars"></i></span>
+            <!-- <img src="img/bell.svg" class="notification-icon" alt="Notifications"> -->
+        </div>
+        <div class="locater">
+            <span><a href="#" id="main">WarriorForgers</a></span>
+            <span><img src="{% static 'img/dashboard/arrow.png' %}" id="arrow"></span>
+            <span id="navigator">Dashboard</span>
+        </div>
+    </header>
+    <aside id="aside">
+        <div class="nav">
+            <span class="close-icon" onclick="hide_menu()"><i class="fa-solid fa-xmark"></i></span>
+            <ul class="nav-side">
+                <li class="name">WarriorForgers</li>
+                <li class="nav-heading">My Account</li>
+                <ul class="sub-fields">
+                    <li><a href="" id="active">Dashboard</a></li>
+                    <li><a href="">My Profile</a></li>
+                    <li><a href="">My Courses</a></li>
+                    <li><a href="">My Mentors</a></li>
+                </ul>
+                <li class="nav-heading">Preperation</li>
+                <ul class="sub-fields">
+                    <li><a href="">5 Days of SSB</a></li>
+                    <li><a href="">GAT</a></li>
+                    <li><a href="">WAT</a></li>
+                    <li><a href="">PPDT</a></li>
+                    <li><a href="">SRT</a></li>
+                    <li><a href="">English</a></li>
+                    <li><a href="">Maths</a></li>
+                    <li><a href="">PYQs</a></li>
+                </ul>
+                <li class="nav-heading">Exam</li>
+                <ul class="sub-fields">
+                    <li><a href="">OLQ Test</a></li>
+                    <li><a href="">Mock Test</a></li>
+                </ul>
+            </ul>
+            <div class="logout">
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </aside>
+
+
+    <main>
+
+        {% block main %}
+
+
+        {% endblock %}
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+    <script src="https://kit.fontawesome.com/95a174de29.js" crossorigin="anonymous"></script>
+    <script>
+        var aside = document.getElementById("aside");
+        var search_bar = document.getElementById("search-bar");
+        var search_icon = document.getElementById("search-icon");
+        var search_go = document.getElementById("search-go");
+
+        function show_menu() {
+            aside.style.left = "0px";
+        }
+        function hide_menu() {
+            aside.style.left = "-250px";
+        }
+        function show_search() {
+            search_bar.style.display = "block";
+            search_icon.style.display = "none";
+            search_go.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

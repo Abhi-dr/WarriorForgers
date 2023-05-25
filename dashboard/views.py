@@ -10,6 +10,10 @@ def home(request):
     user = request.user
     student = get_object_or_404(Student, user_ptr=user)
     
+    parameters = {
+        'student': student
+    }
+    
     if student.is_registered == False:
         
         parameters = {
@@ -18,6 +22,6 @@ def home(request):
         return render(request, 'dashboard/skill_test_blurred.html', parameters)
     
     else:
-        return render(request, 'dashboard/home.html')
+        return render(request, 'dashboard/home.html', parameters)
     
     

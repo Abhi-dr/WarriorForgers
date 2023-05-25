@@ -47,7 +47,16 @@
             <div class="nav-container">
                 <!-- <a href="Register Form/index.html" class="active">Sign Up</a>
           <a href="Login Form/index.html">Login</a> -->
-                <img src="{% static 'img/home/profille.webp' %}" alt="Profile" class="profile" onclick="profile_drop()">
+
+                {% if student.is_authenticated %}
+
+                <img src="{{ student.profile_pic.url }}" alt="Profile" class="profile" onclick="profile_drop()">
+
+                {% else %}
+
+                <img src="{% static 'img/home/profile.png' %}" alt="Profile" class="profile" onclick="profile_drop()">
+                {% endif %}
+
                 <a href="{% url 'main_about' %}" class="nav_about">About US</a>
                 <!-- <a href="#">Contact</a> -->
                 <a href="#ment">Mentors</a>
@@ -66,7 +75,7 @@
 
         <div class="user_profile">
             <div class="profile_dropdown_item">
-                <img src="../../static/img/team/chirag.jpg" alt="Profile" class="user_profile_img">
+                <img src="{{ student.profile_pic.url }}" alt="Profile" class="user_profile_img">
                 <a href="{% url 'dashboard' %}" class="dashboard">Your Dashboard</a>
             </div>
             <div class="profile_dropdown_item">
@@ -78,7 +87,7 @@
 
         <div class="login_register">
             <div class="profile_dropdown_item">
-                <a href="Register Form/index.html" class="sign-up">Sign Up</a>
+                <a href="{% url 'register' %}" class="sign-up">Sign Up</a>
             </div>
             <div class="profile_dropdown_item">
                 <a href="{% url 'login' %}" class="sign-in">Login</a>
