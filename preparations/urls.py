@@ -14,4 +14,8 @@ urlpatterns = [
     # =========== OLQ TEST ===========
     
     path('olq_test', views.olq_test, name='olq_test'),
+    
+    # =========== MOCK TEST ===========
+    
+    path('mock_test', views.mock_test, name='mock_test'),
 ]

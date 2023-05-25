@@ -177,7 +177,10 @@ li a{
     top: 8%; 
     padding: 10px 20px;
     height: 40px;  
-    width: 84%; 
+    width: 84%;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.259);
+
+     
 }
 #main{
     text-decoration: none;
@@ -206,6 +209,6 @@ li a{
     float: right;
     top: 100px;
     right: 0;
-    background-color: black;
     z-index: -1;
+    display: block;
 }

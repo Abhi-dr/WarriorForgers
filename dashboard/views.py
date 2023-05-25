@@ -38,3 +38,45 @@ def request_meeting(request):
     }
     
     return render(request, 'dashboard/request_meeting.html', parameters)
+
+# ================================ MY PROFILE ================================
+
+@login_required(login_url='/accounts/login')
+def my_profile(request):
+            
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'dashboard/my_profile.html', parameters)
+
+# ================================ MY COURSES ================================
+
+@login_required(login_url='/accounts/login')
+def my_courses(request):
+                
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'dashboard/my_courses.html', parameters)
+
+# ================================ MY MENTORS ================================
+
+@login_required(login_url='/accounts/login')
+def my_mentors(request):
+                        
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'dashboard/my_mentors.html', parameters)

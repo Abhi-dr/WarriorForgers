@@ -3,3 +3,191 @@
 {% block page %}
 Request A Meeting
 {% endblock %}
+
+{% block mylink %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block mystyle %}
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    .container-2 {
+        width: 78%;
+        margin: 8% auto;
+        position: absolute;
+        right: 2em;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container-2 h1 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 18px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group select,
+    .form-group input[type="date"],
+    .form-group input[type="time"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .form-group textarea{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .form-group select {
+        height: 40px;
+    }
+
+    .form-group textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    .form-group input[type="file"] {
+        display: none;
+    }
+
+    .form-group .file-upload {
+        display: flex;
+        align-items: center;
+    }
+
+    .form-group .file-upload label {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .form-group .file-upload .btn-upload {
+        padding: 5px 10px;
+        background-color: #909090;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .form-group .file-upload .btn-upload:hover {
+        background-color: #009622;
+    }
+
+    .form-group .datetime-group {
+        display: flex;
+    }
+
+    .form-group .datetime-group .datetime-input {
+        flex-grow: 1;
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .form-group .btn-submit {
+        padding: 10px 20px;
+        margin-left: 80%;
+        background-color: #00a928;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 17px;
+        transition: background-color 0.3s;
+    }
+
+    .form-group .btn-submit:hover {
+        background-color: #009622;
+    }
+</style>
+
+{% endblock %}
+
+{% block main %}
+<div class="container-2">
+    <h1>Request a Meeting</h1>
+    <form>
+        <div class="form-group">
+            <label for="domain">Domain</label>
+            <select id="domain" name="domain">
+                <option value="" disabled selected>Select Domain</option>
+                <option value="NDA">NDA</option>
+                <option value="CDS">CDS</option>
+                <!-- Add more options here -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mentor">Mentor</label>
+            <select id="mentor" name="mentor">
+                <option value="" disabled selected>Select Mentor</option>
+                <option value="mentor1">Mentor 1</option>
+                <option value="mentor2">Mentor 2</option>
+                <!-- Add more options here -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="question">Question</label>
+            <textarea id="question" name="question" placeholder="Enter your question"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">Relevant File</label>
+            <div class="file-upload">
+                <label for="file" class="btn-upload">Upload File</label>
+                <input type="file" id="file" name="file">
+                <span id="file-name"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date">Date and Time</label>
+            <div class="datetime-group">
+                <input type="date" id="date" name="date" class="datetime-input">
+                <input type="time" id="time" name="time" class="datetime-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn-submit">Request a Meeting</button>
+        </div>
+    </form>
+</div>
+
+{% block myscript %}
+<script>
+    const fileInput = document.getElementById('file');
+    const fileNameSpan = document.getElementById('file-name');
+
+    fileInput.addEventListener('change', function () {
+        const files = fileInput.files;
+        if (files.length > 0) {
+            fileNameSpan.textContent = files[0].name;
+        } else {
+            fileNameSpan.textContent = '';
+        }
+    });
+</script>
+
+{% endblock %}
+
+{% endblock %}

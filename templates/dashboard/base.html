@@ -12,6 +12,13 @@
     </style>
     <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/dashboard_mobile.css' %}">
+
+    {% block mylink %}
+    {% endblock %}
+
+    {% block mystyle %}
+    {% endblock %}
+
     <title>Welcome {{ student.first_name }}!</title>
 </head>
 
@@ -45,9 +52,9 @@
                 <li class="nav-heading">My Account</li>
                 <ul class="sub-fields">
                     <li><a href="{% url 'dashboard' %}" id="active">Dashboard</a></li>
-                    <li><a href="">My Profile</a></li>
-                    <li><a href="">My Courses</a></li>
-                    <li><a href="">My Mentors</a></li>
+                    <li><a href="{% url 'my_profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'my_courses' %}">My Courses</a></li>
+                    <li><a href="{% url 'my_mentors' %}">My Mentors</a></li>
                     <li><a href="{% url 'request_meeting' %}">* Request A Meeting *</a></li>
                 </ul>
 
@@ -69,7 +76,7 @@
                 <ul class="sub-fields">
 
                     <li><a href="{% url 'olq_test' %}">OLQ Test</a></li>
-                    <li><a href="">Mock Test</a></li>
+                    <li><a href="{% url 'mock_test' %}">Mock Test</a></li>
                 </ul>
             </ul>
             <div class="logout">
@@ -111,6 +118,9 @@
             search_go.style.display = "block";
         }
     </script>
+
+    {% block myscript %}
+    {% endblock %}
 </body>
 
 </html>

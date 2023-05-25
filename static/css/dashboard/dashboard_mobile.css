@@ -47,17 +47,31 @@
     }
     .main-container{
         position: absolute;
-        height: 100%;
+        height: 800px;
         width: 100%;
         top: 100px;
         left: 0;    
-        background-color: black;
     }
     .navbar .menu-icon{
         display: block;
     }
     aside .close-icon{
         display: block;
+    }
+
+    #previewImage {
+        width: 150px;
+        height: 150px;
+      }
+    .profile_div{
+        position: absolute;
+        right: -114px;
+    }
+
+    #pro-btn{
+        width: 150px;
+        position:absolute;
+        left: -36px;
     }
 
 }

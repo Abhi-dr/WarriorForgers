@@ -137,3 +137,19 @@ def olq_test(request):
     }
     
     return render(request, 'preparations/olq_test.html', parameters)
+
+# ====================================== OLQ TEST END ======================================
+
+# ====================================== MOCK TEST START ======================================
+
+def mock_test(request):
+        
+    user = request.user
+
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'preparations/mock_test.html', parameters)

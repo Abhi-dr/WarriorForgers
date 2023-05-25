@@ -1,0 +1,34 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block page %}
+My Mentors
+{% endblock %}
+
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/dashboard/my_mentors.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="main-container">
+    <div class="courses">
+        <h1 class="course-heading">My Mentors</h1>
+        <div class="my">
+            <div class="course-card">
+                <div class="my-course">
+                    <img src="../../img/images.png" alt="">
+                    <button class="course-btn" id="view_btn">Interact</button>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="my-course">
+                    <img src="../../img/images.png" alt="">
+                    <button class="course-btn" id="view_btn">Interact</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
