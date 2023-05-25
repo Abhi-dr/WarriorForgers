@@ -36,6 +36,7 @@
     <aside id="aside">
         <div class="nav">
             <span class="close-icon" onclick="hide_menu()"><i class="fa-solid fa-xmark"></i></span>
+
             <ul class="nav-side">
                 <li class="name">WarriorForgers</li>
                 <li class="nav-heading">My Account</li>
@@ -44,9 +45,13 @@
                     <li><a href="">My Profile</a></li>
                     <li><a href="">My Courses</a></li>
                     <li><a href="">My Mentors</a></li>
+                    <li><a href="">* Request A Meeting *</a></li>
                 </ul>
+
+
                 <li class="nav-heading">Preperation</li>
                 <ul class="sub-fields">
+
                     <li><a href="">5 Days of SSB</a></li>
                     <li><a href="">GAT</a></li>
                     <li><a href="">WAT</a></li>
@@ -55,10 +60,12 @@
                     <li><a href="">English</a></li>
                     <li><a href="">Maths</a></li>
                     <li><a href="">PYQs</a></li>
+
                 </ul>
                 <li class="nav-heading">Exam</li>
                 <ul class="sub-fields">
-                    <li><a href="">OLQ Test</a></li>
+
+                    <li><a href="{% url 'olq_test' %}">OLQ Test</a></li>
                     <li><a href="">Mock Test</a></li>
                 </ul>
             </ul>

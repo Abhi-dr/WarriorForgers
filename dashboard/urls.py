@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.home, name='dashboard'),
     
     path('regustration_quiz/', include('preparations.urls')),
+    path('preparations/', include('preparations.urls')),
        
 ]

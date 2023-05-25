@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,6 +111,81 @@
       color: #4CAF50;
     }
   </style>
+
+  <style>
+    .container-2 {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container-2 h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .mentors-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mentor {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.341);
+    }
+
+    .mentor-profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .mentor-details {
+      text-align: left;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .mentor-details strong {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .connect-button {
+      margin-left: 20px;
+    }
+
+    .btn-connect {
+      border: none;
+      outline: none;
+      height: 40px;
+      width: 100px;
+      background-color: #00a928;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-connect:hover {
+      transform: scale(1.1);
+      color: #000;
+      background: #00ff80;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+
+
 </head>
 
 <body>
@@ -119,9 +196,7 @@
 
     <div class="result-info">
 
-      {% if success_percentage < 75 %} 
-      
-      <h2 style="color: #c00;">Success Percentage: {{ success_percentage }}%</h2>
+      {% if success_percentage < 75 %} <h2 style="color: #c00;">Success Percentage: {{ success_percentage }}%</h2>
 
         {% else %}
 
@@ -172,6 +247,46 @@
 
     </form>
   </div>
+
+  <br><br>
+
+  {% if success_percentage < 75 %}
+
+  <div class="container">
+    <h1>Here are the mentors you can take help from!</h1>
+
+    <div class="mentors-list">
+      <ul>
+
+        {% for mentor in mentors %}
+
+        <li class="mentor">
+          <div class="mentor-info">
+            <div class="mentor-profile">
+              <img src="{{ mentor.profile_pic.url }}" alt="Mentor Profile Picture">
+            </div>
+            <div class="mentor-details">
+              <strong>Name:</strong> {{ mentor.first_name }} {{ mentor.last_name }}<br>
+              <br>
+              <strong>Field of Expertise:</strong> {{ mentor.experties_field_of_interest }}<br>
+              <br>
+              <strong>Email:</strong> {{ mentor.email }}
+            </div>
+          </div>
+          <div class="connect-button">
+            <button class="btn-connect">Connect</button>
+          </div>
+        </li>
+
+        {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+
+  {% endif %}
+
+
 </body>
 
 </html>

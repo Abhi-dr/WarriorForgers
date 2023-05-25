@@ -10,4 +10,8 @@ urlpatterns = [
     path('next/', views.next_question, name='next_question'),
     path('result/', views.result, name='result'),
     path('reset/', views.reset_quiz, name='reset_quiz'),
+    
+    # =========== OLQ TEST ===========
+    
+    path('olq_test', views.olq_test, name='olq_test'),
 ]
