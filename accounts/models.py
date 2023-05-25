@@ -23,7 +23,7 @@ class Student(User):
     
     mobile_number = models.CharField(max_length=10, blank=True)
     
-    registration_score = models.IntegerField(default=0)
+    registration_score = models.FloatField(default=0)
     
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=10, blank=True, choices=gender_choices)
@@ -36,6 +36,8 @@ class Student(User):
     
     mentors = models.ManyToManyField('Mentor', blank=True)
     courses = models.ManyToManyField('Course', blank=True)
+    
+    is_registered = models.BooleanField(default=False)
     
     def __str__(self):
         return self.first_name + ' ' + self.last_name

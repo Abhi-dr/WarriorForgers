@@ -1,5 +1,23 @@
 from django.shortcuts import render, redirect
 from .models import Registration_Quiz
+from accounts.models import Student
+from django.shortcuts import get_object_or_404
+
+
+def is_student_registered(request):
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    return student.is_registered
+
+# ====================================== OLQ ESTIMATOR WORKING ======================================
+
+def instructions(request):
+    
+    if not is_student_registered(request):
+        return render(request, 'preparations/instructions.html')
+    
+    else:
+        return redirect('dashboard')
 
 def quiz(request):
     if 'user_answers' not in request.session:
@@ -54,7 +72,23 @@ def result(request):
         else:
             incorrect_answers.append((question, question.answer, answer))
 
-    success_percentage = (len(correct_answers) / total_questions) * 100 if total_questions > 0 else 0
+    success_percentage = int((len(correct_answers) / total_questions) * 100 if total_questions > 0 else 0)
+    
+    user = request.user
+    
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    student.registration_score = success_percentage
+    
+    if success_percentage >= 75:
+        student.is_registered = True
+    
+    else:
+        student.is_registered = False        
+        
+    student.save()
+    
+    print("After Changing: ", student.registration_score)
 
     context = {
         'correct_answers': correct_answers,
@@ -69,4 +103,8 @@ def reset_quiz(request):
     request.session.pop('user_answers', None)
     request.session.pop('question_index', None)
     request.session.pop('questions', None)
-    return redirect('quiz')
+    return redirect('instructions')
+
+
+# ====================================== OLQ ESTIMATOR END ======================================
+

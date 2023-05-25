@@ -2,34 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+
+      background-image: url("https://c4.wallpaperflare.com/wallpaper/782/230/429/indian-air-force-sukhoi-su-30mki-aircraft-wallpaper-preview.jpg");
+      background-repeat: no-repeat;
+      width: auto;
+      background-size: cover;
+
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+
+    li {
+      margin-bottom: 20px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Custom Styling */
+    .container {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      max-width: 60%;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-info {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .success-percentage {
+      font-size: 28px;
+      color: #4CAF50;
+      margin-top: 0;
+    }
+
+    .incorrect-questions {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .incorrect-questions li {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .incorrect-questions strong {
+      color: #c00;
+    }
+
+    #correct_ans {
+      color: #4CAF50;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Quiz Result</h1>
+  <div class="container">
+    <h1>Result
+      <hr>
+    </h1>
 
-<p>Correct answers: {{ correct_answers|length }}/{{ total_questions }}</p>
-<p>Success percentage: {{ success_percentage }}%</p>
+    <div class="result-info">
+      <p class="success-percentage">Success Percentage: {{ success_percentage }}%</p>
+      <p>Correct Answers: {{ correct_answers|length }}/{{ total_questions }}</p>
+    </div>
 
-<h2>Questions answered incorrectly:</h2>
-<ul>
-  {% for question, correct_answer, user_answer in incorrect_answers %}
-    <li>
-      <strong>Question:</strong> {{ question.question }} - Your Answer: {{ user_answer }}
-      <br>
-      <strong>Correct Answer:</strong> {{ correct_answer }}
-    </li>
-  {% endfor %}
-</ul>
+    <div class="incorrect-questions">
 
-<form method="POST" action="{% url 'reset_quiz' %}">
-  {% csrf_token %}
-  <button type="submit">Reset Quiz</button>
-</form>
-    
+      {% if success_percentage < 75 %} <h2>Questions Answered Incorrectly:</h2>
+        <ul>
+          {% for question, correct_answer, user_answer in incorrect_answers %}
+          <li>
+            <strong>Question:</strong> {{ question.question }}<br>
+            <br>
+            <strong>Your Answer:</strong> {{ user_answer }}<br>
+            <br>
+            <strong id="correct_ans">Correct Answer:</strong> {{ correct_answer }}
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% else %}
+
+        <h2 style="color: #27b62b; text-align: center;">Congratulations! You can access your Dashboard.</h2>
+
+        {% endif %}
+    </div>
+
+    <br>
+
+    <form method="POST" action="{% url 'reset_quiz' %}">
+      {% csrf_token %}
+
+      {% if success_percentage < 75 %} <button type="submit">Reset Quiz</button>
+
+        {% endif %}
+
+        <a href="{% url 'dashboard' %}">
+          <button type="button">
+            Go to Dashboard
+          </button>
+        </a>
+
+    </form>
+  </div>
 </body>
 
 </html>

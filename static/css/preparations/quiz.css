@@ -5,9 +5,19 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-body{
-    background: url("https://static.vecteezy.com/system/resources/previews/006/762/413/original/army-stripes-camouflage-pattern-green-jungle-forest-battlefield-military-wide-background-free-vector.jpg")
+.main{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.304),rgba(0, 0, 0, 0.336)),url("https://media.cntraveller.in/wp-content/uploads/2017/01/airforcewomenlead.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+
+/* .main{
+    width: 100%;
+    height: 100vh;
+} */
 
 /* add css to container as it is a box like structure havin instrusctions and 2 btns */
 .logo-img{
@@ -21,6 +31,7 @@ body{
 .container{
     position: relative;
     width: 100%;
+    /* height: 100vh; */
     max-width: 700px;
     background: #fff;
     border-radius: 15px;

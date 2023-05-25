@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MCQ Exam Instructions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.304), rgba(0, 0, 0, 0.336)), url("/static/img/preparations/instructions.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .important {
+      color: #c00;
+      font-weight: bold;
+    }
+
+    .action-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .action-button:hover {
+      background-color: #45a049;
+    }
+
+    li {
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>OLQ Estimator Instructions</h1>
+    <p>Welcome to the OLQ Estimator. Please read the instructions carefully before starting the exam.</p>
+    <ol>
+      <li><strong>Duration:</strong> The exam will be conducted for 20 minutes. The timer will start once you begin the
+        exam.</li>
+      <li><strong>Number of Questions:</strong> The exam consists of 20 multiple-choice questions.</li>
+      <li><strong>Question Format:</strong> Each question will have four options, and you need to select the correct
+        one.</li>
+      <li><strong>Marking Scheme:</strong> Each correct answer will be awarded 1 mark, and there is no negative marking
+        for incorrect answers.</li>
+      <li><strong>Navigation:</strong> You <b>CANNOT</b> navigate between questions. Only "Next" button is there.</li>
+      <li><strong>Submit:</strong> Once you have completed all the questions, click the "Submit" button to finish the
+        exam.</li>
+    </ol>
+    <p class="important">Note: Do not refresh the page or close the browser window during the exam, as it may result in
+      disqualification.</p>
+    <p>Click the button below to start the exam.</p>
+    <a href="{% url 'quiz' %}" class="action-button" onclick="return confirm('You will be redirected to the Exam Page')">Start Exam</a>
+  </div>
+</body>
+
+</html>
