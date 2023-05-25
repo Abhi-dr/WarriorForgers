@@ -14,18 +14,21 @@ My Mentors
     <div class="courses">
         <h1 class="course-heading">My Mentors</h1>
         <div class="my">
+
+            {% for mentor in mentors %}
+
             <div class="course-card">
                 <div class="my-course">
-                    <img src="../../img/images.png" alt="">
+                    <img src="{{ mentor.profile_pic.url }}" alt="">
+
+
+                    <a href="{% url 'request_meeting' %}" style="text-decoration: none;">
                     <button class="course-btn" id="view_btn">Interact</button>
+                </a>
                 </div>
             </div>
-            <div class="course-card">
-                <div class="my-course">
-                    <img src="../../img/images.png" alt="">
-                    <button class="course-btn" id="view_btn">Interact</button>
-                </div>
-            </div>
+
+            {% endfor %}
         </div>
 
     </div>

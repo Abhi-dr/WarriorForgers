@@ -14,49 +14,61 @@ OLQ Test
 {% block main %}
 
 <div class="main-container">
-    <div class="test-selector">
-      <div class="card">
-        <div class="card-content">
-          <div class="text">
-            <p>OLQ Test 1</p>
-          </div>
-          <div class="btn">
-            <button class="start_now">Start Now</button>
-          </div>
+  <div class="test-selector">
+    <div class="card">
+      <div class="card-content">
+        <div class="text">
+          <p>OLQ Test 1</p>
         </div>
-        <div class="card-footer">
-          <p>50 Q . 50 M . 50 Min</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-content">
-          <div class="text">
-            <p>OLQ Test 2</p>
-          </div>
-          <div class="btn">
-            <button class="start_now">Start Now</button>
-          </div>
-        </div>
-        <div class="card-footer">
-            <p>50 Q . 50 M . 50 Min</p>
+        <div class="btn">
+          <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+            <button class="start_now">
+              Start Now
+            </button>
+          </a>
         </div>
       </div>
+      <div class="card-footer">
+        <p>50 Q . 50 M . 50 Min</p>
+      </div>
+    </div>
 
-      <div class="card">
-        <div class="card-content">
-          <div class="text">
-            <p>OLQ Test 3</p>
-          </div>
-          <div class="btn">
-            <button class="start_now">Start Now</button>
-          </div>
+    <div class="card">
+      <div class="card-content">
+        <div class="text">
+          <p>OLQ Test 2</p>
         </div>
-        <div class="card-footer">
-            <p>50 Q . 50 M . 50 Min</p>
+        <div class="btn">
+          <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+            <button class="start_now">
+              Start Now
+            </button>
+          </a>
         </div>
+      </div>
+      <div class="card-footer">
+        <p>50 Q . 50 M . 50 Min</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="text">
+          <p>OLQ Test 3</p>
+        </div>
+        <div class="btn">
+          <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+            <button class="start_now">
+              Start Now
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="card-footer">
+        <p>50 Q . 50 M . 50 Min</p>
       </div>
     </div>
   </div>
+</div>
 
 {% endblock %}

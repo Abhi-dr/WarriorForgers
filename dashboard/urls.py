@@ -14,5 +14,9 @@ urlpatterns = [
     path('my_profile', views.my_profile, name='my_profile'),
     path('my_courses', views.my_courses, name='my_courses'),
     path('my_mentors', views.my_mentors, name='my_mentors'),
+    
+    # ====================== FUNCTIONALITIES ======================
+    
+    path('buy_course/<int:id>', views.buy_course, name='buy_course'),
        
 ]

@@ -14,40 +14,46 @@ My Courses
 {% block main %}
 
 <div class="main-container">
-    <div class="courses">
-        <h1 class="course-heading">Your Courses</h1>
-        <div class="my">
-            <div class="course-card">
-                <div class="my-course">
-                    <img src="../../images/image1.jpg" alt="">
-                    <button class="course-btn" id="view_btn">View Course</button>
+    <h1>My Courses</h1>
+    <div class="test-selector">
+
+        {% for course in courses %}
+
+        <div class="card">
+            <div class="card-content">
+                <div class="course_img">
+                    <img src="{{ course.image.url }}" alt="course">
                 </div>
-            </div>
-            <div class="course-card">
-                <div class="my-course">
-                    <img src="../../images/image1.jpg" alt="">
-                    <button class="course-btn" id="view_btn">View Course</button>
-                </div>
-            </div>
-        </div>
-        <h1 class="course-heading">Buy Courses</h1>
-        <div class="buy">
-            <div class="course-card" id="cc1">
-                <div class="buy-course">
-                    <img src="../../images/image2.jpg" alt="">
-                    <button class="course-btn" id="view_btn">View Course</button>
-                </div>
-            </div>
-            <div class="course-card" id="cc2">
-                <div class="buy-course">
-                    <img src="../../images/image2.jpg" alt="">
-                    <button class="course-btn" id="view_btn">View Course</button>
+                <div class="btn">
+                    <button class="view_course">View Course</button>
                 </div>
             </div>
         </div>
+
+        {% endfor %}
+    </div>
+
+    <h1>Buy Courses</h1>
+    <div class="test-selector">
+
+        {% for left_course in left_courses %}
+
+        <div class="card">
+            <div class="card-content">
+                <div class="course_img">
+                    <img src="{{ left_course.image.url }}" alt="course">
+                </div>
+                <div class="btn">
+                    <a href="{% url 'buy_course' left_course.id %}" style="text-decoration: none;">
+                        <button class="view_course" onclick="return confirm('Are you sure you want to Buy This Course?');">Buy Course</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
     </div>
 </div>
-
 {% block myscript %}
 
 <script>

@@ -1,35 +1,35 @@
 from django.shortcuts import render, redirect
-from .models import Registration_Quiz
+from .models import Registration_Quiz, OLQ_Quiz
 from accounts.models import Student, Mentor
 from django.shortcuts import get_object_or_404
 
+# ====================================== OLQ TEST START ======================================
 
-def is_student_registered(request):
+def olq_test(request):
+    
     user = request.user
+
     student = get_object_or_404(Student, user_ptr=user)
-    return student.is_registered
-
-# ====================================== OLQ ESTIMATOR WORKING ======================================
-
-
-def instructions(request):
-
-    if not is_student_registered(request):
-        user = request.user
-
-        student = get_object_or_404(Student, user_ptr=user)
-        
-        parameters = {
-            'student': student
-        }
-
-        return render(request, 'preparations/instructions.html', parameters)
-
-    else:
-        return redirect('dashboard')
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'preparations/olq_test.html', parameters)
 
 
-def quiz(request):
+def olq_instructions(request):
+    user = request.user
+
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    parameters = {
+        'student': student
+    }
+    return render(request, 'preparations/instructions.html', parameters)
+
+
+def olq_quiz(request):
     
     user = request.user
 
@@ -38,31 +38,28 @@ def quiz(request):
     if 'user_answers' not in request.session:
         request.session['user_answers'] = {}
         request.session['question_index'] = 0
-        questions = Registration_Quiz.objects.order_by(
+        questions = OLQ_Quiz.objects.order_by(
             '?')[:10]  # Randomly select 10 questions
         request.session['questions'] = [question.id for question in questions]
 
     question_index = request.session['question_index']
-    questions = Registration_Quiz.objects.filter(
+    questions = OLQ_Quiz.objects.filter(
         id__in=request.session['questions'])
     total_questions = len(request.session['questions'])
 
     if question_index >= total_questions:
-        return redirect('result')
+        return redirect('olq_result')
 
     question = questions[question_index]
-    context = {'question': question, 
-               'question_index': question_index + 1, 
-               'total_questions': total_questions,
-                'student': student
-               }
+    context = {'question': question, 'question_index': question_index +
+               1, 'total_questions': total_questions, 'student': student}
     return render(request, 'preparations/quiz.html', context)
 
 
-def next_question(request):
+def olq_next_question(request):
     if request.method == 'POST':
         question_index = request.session['question_index']
-        questions = Registration_Quiz.objects.filter(
+        questions = OLQ_Quiz.objects.filter(
             id__in=request.session['questions'])
         total_questions = len(request.session['questions'])
 
@@ -74,13 +71,18 @@ def next_question(request):
         request.session['user_answers'][question_id] = user_answer
 
         if question_index >= total_questions - 1:
-            return redirect('result')
+            return redirect('olq_result')
 
-    return redirect('quiz')
+    return redirect('olq_quiz')
 
 
-def result(request):
-    questions = Registration_Quiz.objects.filter(
+def olq_result(request):
+    
+    user = request.user
+
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    questions = OLQ_Quiz.objects.filter(
         id__in=request.session['questions'])
     user_answers = request.session.get('user_answers', {})
 
@@ -103,8 +105,6 @@ def result(request):
 
     student = get_object_or_404(Student, user_ptr=user)
 
-    student.registration_score = success_percentage
-
     if success_percentage >= 75:
         student.is_registered = True
         context = {
@@ -112,11 +112,10 @@ def result(request):
             'incorrect_answers': incorrect_answers,
             'total_questions': total_questions,
             'success_percentage': success_percentage,
-            'student': student,
+            'student': student
             }
 
     else:
-        student.is_registered = False
         mentors = Mentor.objects.filter(
             experties_field_of_interest=student.field_of_interest)
         context = {
@@ -125,33 +124,17 @@ def result(request):
             'total_questions': total_questions,
             'success_percentage': success_percentage,
             'mentors': mentors,
-            'student': student,
+            'student': student
         }
-
-    student.save()
 
     return render(request, 'preparations/result.html', context)
 
 
-def reset_quiz(request):
+def olq_reset_quiz(request):
     request.session.pop('user_answers', None)
     request.session.pop('question_index', None)
     request.session.pop('questions', None)
-    return redirect('instructions')
+    return redirect('olq_instructions')
 
+# ====================================== OLQ TEST END ======================================
 
-# ====================================== OLQ ESTIMATOR END ======================================
-
-# ====================================== MOCK TEST START ======================================
-
-def mock_test(request):
-        
-    user = request.user
-
-    student = get_object_or_404(Student, user_ptr=user)
-    
-    parameters = {
-        'student': student
-    }
-    
-    return render(request, 'preparations/mock_test.html', parameters)

@@ -66,7 +66,15 @@
 
 <body>
   <div class="container">
+
+    {% if student.is_registered %}
+
+    <h1>OLQ Exam</h1>
+
+    {% else %}
     <h1>OLQ Estimator Instructions</h1>
+
+    {% endif %}
     <p>Welcome to the OLQ Estimator. Please read the instructions carefully before starting the exam.</p>
     <ol>
       <li><strong>Duration:</strong> The exam will be conducted for 20 minutes. The timer will start once you begin the
@@ -83,7 +91,17 @@
     <p class="important">Note: Do not refresh the page or close the browser window during the exam, as it may result in
       disqualification.</p>
     <p>Click the button below to start the exam.</p>
-    <a href="{% url 'quiz' %}" class="action-button" onclick="return confirm('You will be redirected to the Exam Page')">Start Exam</a>
+
+    {% if student.is_registered %}
+    <a href="{% url 'olq_quiz' %}" class="action-button" onclick="return confirm('You will be redirected to the Exam Page')">Start Exam</a>
+
+    {% else %}
+
+    <a href="{% url 'quiz' %}" class="action-button" onclick="return confirm('You will be redirected to the Exam Page')">Start Estimator</a>
+    {% endif %}
+    
+
+    <!-- <a href="{% url 'quiz' %}" class="action-button" onclick="return confirm('You will be redirected to the Exam Page')">Start Exam</a> -->
   </div>
 </body>
 

@@ -26,6 +26,31 @@
 
       <div class="instructions" id="question">
 
+        {% if student.is_registered %}
+
+        <form action="{% url 'olq_next_question' %}" method="POST" id="quiz_form">
+          {% csrf_token %}
+          <h1>Question {{ question_index }} of {{ total_questions }}</h1>
+
+          <ul>
+
+            <li><b>Q{{ question_index }}.</b> {{ question.question }}</li>
+
+            <li> <input type="radio" name="{{ question.id }}" value="{{ question.option1 }}">{{ question.option1 }}</li>
+            <li> <input type="radio" name="{{ question.id }}" value="{{ question.option2 }}">{{ question.option2 }}</li>
+            <li> <input type="radio" name="{{ question.id }}" value="{{ question.option3 }}">{{ question.option3 }}</li>
+            <li> <input type="radio" name="{{ question.id }}" value="{{ question.option4 }}">{{ question.option4 }}</li>
+
+          </ul>
+
+          {% if question_index < total_questions %} <button class="btn1" type="submit" id="next">Next</button>
+            {% else %}
+            <button class="btn1" type="submit" id="next">Submit</button>
+            {% endif %}
+        </form>
+
+        {% else %}
+
         <form action="{% url 'next_question' %}" method="POST" id="quiz_form">
           {% csrf_token %}
           <h1>Question {{ question_index }} of {{ total_questions }}</h1>
@@ -46,6 +71,8 @@
             <button class="btn1" type="submit" id="next">Submit</button>
             {% endif %}
         </form>
+
+        {% endif %}
       </div>
     </div>
   </div>
