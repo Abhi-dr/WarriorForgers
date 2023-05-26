@@ -1,0 +1,29 @@
+{% extends 'dashboard/mentor/base.html' %}
+{% load static %}
+{% block page %}
+My Videos
+{% endblock %}
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/mentor_dashboard/my_videos.css' %}">
+{% endblock %}
+{% block main %}
+<div class="main-container">
+    <span class="add"><i class="fa-solid fa-plus"></i></span>
+    <div class="courses">
+        <h1 class="course-heading">My Videos</h1>
+        <div class="my">
+            <div class="course-card">
+                <div class="video">
+
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="video">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

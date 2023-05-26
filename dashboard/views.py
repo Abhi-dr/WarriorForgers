@@ -19,10 +19,10 @@ def home(request):
         parameters = {
         'student': student
     }
-        return render(request, 'dashboard/skill_test_blurred.html', parameters)
+        return render(request, 'dashboard/student/skill_test_blurred.html', parameters)
     
     else:
-        return render(request, 'dashboard/home.html', parameters)
+        return render(request, 'dashboard/student/home.html', parameters)
     
     
 # ================================ REQUEST MEETING ================================
@@ -37,7 +37,7 @@ def request_meeting(request):
         'student': student
     }
     
-    return render(request, 'dashboard/request_meeting.html', parameters)
+    return render(request, 'dashboard/student/request_meeting.html', parameters)
 
 # ================================ MY PROFILE ================================
 
@@ -51,7 +51,7 @@ def my_profile(request):
         'student': student
     }
     
-    return render(request, 'dashboard/my_profile.html', parameters)
+    return render(request, 'dashboard/student/my_profile.html', parameters)
 
 # ================================ MY COURSES ================================
 
@@ -70,7 +70,7 @@ def my_courses(request):
         'left_courses': left_courses
     }
     
-    return render(request, 'dashboard/my_courses.html', parameters)
+    return render(request, 'dashboard/student/my_courses.html', parameters)
 
 
 def buy_course(request, id):
@@ -100,4 +100,18 @@ def my_mentors(request):
         'mentors': mentors
     }
     
-    return render(request, 'dashboard/my_mentors.html', parameters)
+    return render(request, 'dashboard/student/my_mentors.html', parameters)
+
+# ================================ MENTOR DASHBOARD ================================
+
+@login_required(login_url='/accounts/login')
+def mentor_dashboard(request):
+                                
+    user = request.user
+    mentor = get_object_or_404(Mentor, user_ptr=user)
+    
+    parameters = {
+        'mentor': mentor
+    }
+    
+    return render(request, 'dashboard/mentor/home.html', parameters)

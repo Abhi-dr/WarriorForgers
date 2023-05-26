@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'preparations.apps.PreparationsConfig',
     'dashboard.apps.DashboardConfig',
+    'mentor_dashboard.apps.MentorDashboardConfig',
     
 ]
 

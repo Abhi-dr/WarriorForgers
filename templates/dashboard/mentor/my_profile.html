@@ -1,0 +1,141 @@
+{% extends 'dashboard/mentor/base.html' %}
+{% load static %}
+
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/mentor_dashboard/my_profile.css' %}">
+{% endblock %}
+
+{% block page %}My Profile{% endblock %}
+{% block main %}
+
+<div class="main-container">
+    <div class="edit" id="edit">
+        <div class="my_profile_main">
+            <div class="profile_div">
+                <img id="previewImage" src="{{ mentor.profile_pic.url }}" alt="Profile Image">
+            </div>
+            <div id="photo">
+                <button onclick="uploadImage()" id="pro-btn">Update Profile Picture</button>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            </div>
+        </div>
+        <hr id="profile-divider">
+        <div class="form-container-edit">
+            <form class="details">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="first_name" value="{{ mentor.first_name }}"><br>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="last_name" value="{{ mentor.last_name }}"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ mentor.email }}"><br>
+
+                <label for="mobileNo">Mobile No:</label>
+                <input type="tel" id="mobileNo" name="mobile_number" value="{{ mentor.mobile_number }}"><br>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="{{ mentor.age }}"><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select><br>
+ 
+                <label for="field_type">Field Type:</label>
+                <select id="fieldType" name="fieldType">
+                    <option value="" selected disabled>Select</option>
+                    <option value="Commissioned">Commissioned</option>
+                    <option value="Non-Commissioned">Non-Commissioned</option>
+                </select><br>
+                
+                <label for="field_of_interest">Field of Interest:</label>
+                <select id="fieldType" name="fieldType">
+                    <option value="" selected disabled>Select</option>
+                    <option value="NDA">NDA</option>
+                    <option value="CDS">CDA</option>
+                    <option value="Territorial Army">Territorial Army</option>
+                </select><br>
+                
+                <input type="submit" value="Submit" onclick="save()">
+            </form>
+        </div>
+    </div>
+    <div class="non-edit" id="non-edit">
+        <div class="my_profile_main">
+            <div class="profile_div">
+                <img id="previewImage" src="{{ mentor.profile_pic.url }}" alt="Profile Image">
+            </div>
+            <div id="photo"></div>
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+        </div>
+        <hr id="profile-divider-non-edit">
+        <div class="form-container">
+            <div class="data">
+                <label><b>Name:</b> {{ mentor.first_name }} {{ mentor.last_name }}</label>
+                <label><b>Email:</b> {{ mentor.email }}</label>
+                <label><b>Mobile No:</b> {{ mentor.mobile_number }}</label>
+                <label><b>Age:</b> {{ mentor.age }}</label>
+                <label><b>Gender:</b> {{ mentor.gender }}</label>
+                <label><b>Field Type:</b> {{ mentor.field_type }}</label>
+                <label id="lastfield"><b>Field of Interest:</b> {{ mentor.field_of_interest }}</label>
+
+                <button onclick="edit()" id="pro-edit-btn">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block myscript %}
+
+<script>
+    var aside = document.getElementById("aside");
+    var search_bar = document.getElementById("search-bar");
+    var search_icon = document.getElementById("search-icon");
+    var search_go = document.getElementById("search-go");
+
+    function show_search() {
+        search_bar.style.display = "block";
+        search_icon.style.display = "none";
+        search_go.style.display = "block";
+    }
+
+    function uploadImage() {
+        var input = document.getElementById('imageUpload');
+        var previewImage = document.getElementById('previewImage');
+
+        input.click(); // Trigger the file input click event
+        input.onchange = function () {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+    }
+
+    var Edit = document.getElementById("edit");
+    var nonEdit = document.getElementById("non-edit");
+
+    function edit(){
+        nonEdit.style.display = "none";
+        Edit.style.display = "block";
+    }
+    function save(){
+        Edit.style.display = "none";
+        nonEdit.style.display = "block";
+
+    }
+</script>
+
+{% endblock myscript %}
+
+{% endblock %}
+

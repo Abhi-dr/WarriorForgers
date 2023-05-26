@@ -1,0 +1,33 @@
+{% extends 'dashboard/mentor/base.html' %}
+{% load static %}
+
+{% block page %}
+My Courses
+{% endblock %}
+
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/mentor_dashboard/my_courses.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="main-container">
+    <span class="add"><i class="fa-solid fa-plus"></i></span>
+    <div class="courses">
+        <h1 class="course-heading">My Courses</h1>
+        <div class="my">
+
+            {% for course in courses %}
+
+            <div class="course-card">
+                <div class="my-course">
+                    <img src="{{ course.image.url }}" alt="">
+                    <button class="course-btn" id="view_btn">View Course</button>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

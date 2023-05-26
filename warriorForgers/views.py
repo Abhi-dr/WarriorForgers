@@ -12,10 +12,12 @@ def home(request):
     if user.is_authenticated:
     
         student = get_object_or_404(Student, user_ptr=user)
+        mentor = get_object_or_404(Mentor, user_ptr=user)
     
         parameters = {
             'mentors': mentors,
-            'student': student
+            'student': student,
+            'mentor': mentor
         }
     
     else:

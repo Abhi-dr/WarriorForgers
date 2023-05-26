@@ -7,6 +7,8 @@ urlpatterns = [
     
     path('', views.home, name='dashboard'),
     
+    path('/mentor_dashboard', views.mentor_dashboard, name='mentor_dashboard'),
+    
     path('regustration_quiz/', include('preparations.urls')),
     path('preparations/', include('preparations.urls')),
     

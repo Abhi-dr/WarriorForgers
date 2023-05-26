@@ -7,61 +7,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/accounts/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
     <title>Login Here!</title>
 </head>
 
 <body>
+    <h2>Welcome back, <span class="typed" data-typed-items="Mentor, Aspirant"></span></h2>
     <div class="container" id="container">
-        <div class="form-container sign-in-container">
-            <form action="login" method="post">
+
+
+        <div class="form-container sign-up-container">
+            <form action="{% url 'mentor_login' %}" method="post">
 
                 {% csrf_token %}
 
-                <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Login Here</h1>
+                <h1>Mentors' Login</h1>
                 <div class="social-container">
                     <a href="#" class="social" id="facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social" id="google"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social" id="linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email for Login</span>
-                <input type="email" placeholder="Email" name="email"/>
-                <input type="password" placeholder="Password" name="password"/>
-                <button type="submit">Sign In</button>
+
+                <input type="email" placeholder="Email" name="email" required/>
+                <input type="password" placeholder="Password" name="password" required/>
+                
+                <button type="submit">Login</button>
 
             </form>
         </div>
+
+
+        <div class="form-container sign-in-container">
+            <form action="{% url 'student_login' %}" method="post">
+
+                {% csrf_token %}
+
+                <h1>Aspirants' Login</h1>
+                <div class="social-container">
+                    <a href="#" class="social" id="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social" id="google"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social" id="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <input type="email" placeholder="Email" name="email" required/>
+                <input type="password" placeholder="Password" name="password" required/>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1>Hello Mentor</h1>
-                    <p>Sign Up here to join our community</p>
+                    <p>Lohin here to be the Game Changer for someone!</p>
+                    <button class="ghost" id="signIn">I am an aspirant! </button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h2>Hello, <span class="typed" data-typed-items="Mentor, Aspirant"></span></h2>
-                    <p>Welcome to WarriorForgers</p>
+                    <h1>Hello, Aspirant!</h1>
+                    <p>Login here to be the Game Changer!</p>
+                    <button class="ghost" id="signUp">I am a mentor!</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <footer>
-        <p>
-            Created by
-            <a target="_blank" href="#">Black Order</a>
-        </p>
-    </footer> -->
 
     <script src="{% static 'js/accounts/typed.js' %}"></script>
 
     <script>
         const typedElement = document.querySelector('.typed');
         const typedItems = typedElement.getAttribute('data-typed-items').split(',');
-
+      
         new Typed(typedElement, {
-            strings: typedItems,
-            typeSpeed: 40,
-            loop: true
+          strings: typedItems,
+          typeSpeed: 80,
+          loop: true
+        });
+      </script>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
         });
     </script>
     <script src="https://kit.fontawesome.com/95a174de29.js" crossorigin="anonymous"></script>
