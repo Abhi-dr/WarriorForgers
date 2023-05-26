@@ -104,6 +104,9 @@ def olq_result(request):
     user = request.user
 
     student = get_object_or_404(Student, user_ptr=user)
+    
+    student.olq_score = success_percentage
+    student.save()
 
     if success_percentage >= 75:
         student.is_registered = True

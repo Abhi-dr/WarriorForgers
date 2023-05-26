@@ -22,6 +22,16 @@ def home(request):
         return render(request, 'dashboard/student/skill_test_blurred.html', parameters)
     
     else:
+        
+        courses = student.courses.all()
+        left_mentors = Mentor.objects.exclude(id__in=student.mentors.all().values_list('id'))
+        
+        parameters = {
+        'student': student,
+        'courses': courses,
+        'left_mentors': left_mentors
+    }
+        
         return render(request, 'dashboard/student/home.html', parameters)
     
     
@@ -133,3 +143,32 @@ def mentor_videos(request):
     }
     
     return render(request, 'dashboard/student/mentor_videos.html', parameters)
+
+# ================================ CONNECT MENTOR ================================
+
+@login_required(login_url='/accounts/login')
+def connect_mentor(request, id):
+        
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    mentor = get_object_or_404(Mentor, id=id)
+    
+    student.mentors.add(mentor)
+    student.save()
+    
+    return redirect('my_mentors')
+
+# ================================ SSB INFO ================================
+
+@login_required(login_url='/accounts/login')
+def ssb_info(request):
+            
+        user = request.user
+        student = get_object_or_404(Student, user_ptr=user)
+        
+        parameters = {
+            'student': student
+        }
+        
+        return render(request, 'dashboard/student/ssb_info.html', parameters)   

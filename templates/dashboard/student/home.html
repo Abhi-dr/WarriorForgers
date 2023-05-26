@@ -4,3 +4,127 @@
 {% block page %}
 Dashboard
 {% endblock %}
+
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/student_dashboard/home.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<h1 id="result">Results</h1>
+<div class="section-score">
+
+    <div class="circle-ring" id="circle1">
+        <div class="score">{{ student.registration_score }}%</div>
+    </div>
+    <span class="score-head">Registration Score</span>
+
+    <div class="circle-ring" id="circle2">
+        <div class="score">{{ student.olq_score }}%</div>
+    </div>
+    <span class="score-head">OLQ Score</span>
+
+    <div class="circle-ring" id="circle3">
+        <div class="score">{{ student.mock_test_score }}%</div>
+    </div>
+    <span class="score-head">Mock Test Score</span>
+</div>
+<div class="courses_dashboard">
+    <h1>Your Courses</h1>
+    <div class="test-selector">
+
+        {% for course in courses %}
+        <div class="course-card">
+            <div class="card-content">
+                <div class="course_img">
+                    <img src="{{ course.image.url }}" alt="course">
+                </div>
+                <div class="btn">
+                    <button class="view_course">View Course</button>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+<div class="dash-mentors">
+    <h1 id="result1">Suggested Mentors</h1>
+    <div class="courses">
+        <div class="my">
+
+            {% for mentor in left_mentors %}
+
+            <div class="mentor-card">
+                <div class="my-course">
+                    <img src="{{ mentor.profile_pic.url }}" alt="">
+                    <a style="text-decoration:none ;" href="{% url 'connect_mentor' mentor.id %}">
+                        <button class="course-btn" id="view_btn" onclick="return confirm('Do you want to add this Mentor?');">Connect</button>
+                    </a>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="tests">
+    <h1 id="result1">OLQ Test</h1>
+    <div class="olq-selector">
+        <div class="olq-card">
+            <div class="olq-content">
+                <div class="text">
+                    <p>OLQ Test 1</p>
+                </div>
+                <div class="btn">
+                    <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+                        <button class="start_now">
+                          Start Now
+                        </button>
+                      </a>
+                </div>
+            </div>
+            <div class="olq-footer">
+                <p>50 Q . 50 M . 50 Min</p>
+            </div>
+        </div>
+
+        <div class="olq-card">
+            <div class="olq-content">
+                <div class="text">
+                    <p>OLQ Test 2</p>
+                </div>
+                <div class="btn">
+                    <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+                        <button class="start_now">
+                          Start Now
+                        </button>
+                      </a>
+                </div>
+            </div>
+            <div class="olq-footer">
+                <p>50 Q . 50 M . 50 Min</p>
+            </div>
+        </div>
+
+        <div class="olq-card">
+            <div class="olq-content">
+                <div class="text">
+                    <p>OLQ Test 3</p>
+                </div>
+                <div class="btn">
+                    <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
+                        <button class="start_now">
+                          Start Now
+                        </button>
+                      </a>
+                </div>
+            </div>
+            <div class="olq-footer">
+                <p>50 Q . 50 M . 50 Min</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

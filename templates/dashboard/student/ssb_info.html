@@ -1,0 +1,153 @@
+{% extends 'dashboard/student/base.html' %}
+{% load static %}
+{% block page %}
+% Days of SSB
+{% endblock %}
+{% block mylink %}
+<link rel="stylesheet" href="{% static 'css/dashboard/ssb_info.css' %}">
+{% endblock %}
+{% block main %}
+<div class="main-container">
+    <h1>5 Days Of SSB (Staff Selection Board)</h1>
+
+    <div class="test-selector">
+
+        <div class="card" id="day0">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 0 (Reporting)</h2>
+                    <li>The Aspirants are usually received at the station by an officer(s) of the board, and from there,
+                        they are taken to the selection centre.</li>
+                    <li>After the Aspirants are settled in, an ‘Opening Address’ takes place where an officer of the
+                        board briefs them of their stay for the next 5 days.</li>
+                    <li>Document Verification takes place after that, where the original documents of the Aspirants are
+                        verified.</li>
+                    <li>In some boards (esp. Air Force), the Reporting day is regarded as Day 1 of SSB, and the testing
+                        starts on the same day</li>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 1 (Screening)</h2>
+                    <p>The first day involves 3 tests:
+                        <br>
+                        <li>Picture Perception & Discussion Test (PP&DT)</li>
+                        <li>Officer Intelligence Rating Test (OIR Test)</li><br>
+                        The first day involves the ‘Officer Intelligence Rating Test’ which consists of Verbal and
+                        Non-verbal Tests. The candidate gets two booklets having 40 questions each. The time allotted
+                        for each booklet is 15- 17 minutes.
+                    </p>
+                </div>
+                <div class="btn">
+                    <button class="show">Show More</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card" id="day2">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 2 (Psychology Test)</h2>
+                    <p>On the second day of SSB, a Psychological Test is conducted. The following tests take place on
+                        this day:</p>
+                    <li><b>Thematic Apperception Test (TAT):</b> Aspirants are shown 12 images (including 1 blank), and
+                        they must write a story for 4 minutes. The time limit is imposed to gauge the natural response
+                        of each Aspirant.</li>
+                    <li><b>Word Association Test (WAT):</b> 60 words are displayed in front of the Aspirants for 15
+                        seconds each, and they need to write down a sentence that comes to their mind on seeing the
+                        word.</li>
+                    <li><b>Situation Reaction Test (SRT):</b> A booklet is given to the Aspirants with 60 real-life
+                        situations; they must write their reactions to those situations. The total duration of this
+                        exercise is 30 minutes.</li>
+                    <li><b>Self-Description Test (SDT):</b> Aspirants must write a few paragraphs covering their
+                        self-description for the context. For instance, writing the opinion of their parents, teachers,
+                        friends, etc., and the qualities the Aspirants wish to develop. The time allotted for this test
+                        is 15 minutes.</li>
+                </div>
+                <div class="btn">
+                    <button class="show">Show More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="day3">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 3 (Group Testing - I)</h2>
+                    <p>Day 3 involves Group Testing. Here several outdoor tests are conducted where the Aspirants need
+                        to participate in groups. This day involves the following group tests:</p>
+                    <li><b>Group Discussion:</b> The group discussion is conducted on two topics, back to back, on some
+                        current events or social issues. The debate is usually 20-30 minutes each.</li>
+                    <li><b>Group Planning Exercise (GPE):</b> Here, the Aspirants are clubbed into a group of 10 – 15
+                        people and given a story based on a model with specific issues. Aspirants need to identify the
+                        issues and provide a practical solution for them.</li>
+                    <li><b>Progressive Group Task (PGT):</b> Aspirants must collectively overcome the 4 given obstacles
+                        in a group for which they are given some helping material and a load with some rules.</li>
+                    <li><b>Group Obstacle Race (GOR):</b> Commonly referred to as the Snake race, each group must
+                        compete against another group for 6 given obstacles.</li>
+                    <li><b>Half Group Task (HGT):</b> This exercise is like PGT, but it is conducted with a smaller
+                        group over a single obstacle.</li>
+                </div>
+                <div class="btn">
+                    <button class="show">Show More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="day3">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 4 (Group Testing - II)</h2>
+                    <p>This day is again dedicated to Group Testing. Following tests are conducted on this day:</p>
+                    <li><b>Lecturette:</b> Each Aspirant is presented with 4 topics, of which he needs to choose one and
+                        speak on it for 3 minutes.</li>
+                    <li><b>Individual Obstacles (IO):</b> Each Aspirant needs to clear 10 given obstacles in 3 minutes,
+                        marked from 1-10 based on the difficulty level.</li>
+                    <li><b>Command Task (CT):</b> Each Aspirant is made the commander and is given an obstacle similar
+                        to HGT, which they need to overcome with the help of their subordinates.</li>
+                    <li><b>Final Group Task (FGT):</b> The entire group is reunited and required to complete the
+                        assigned task similar to PGT in the stipulated time.
+                    </li>
+                    <li><b>Personal Interview:</b> Personal Interviews are generally conducted on days 2, 3, and 4 after
+                        the respective daily tasks have been completed. Interviews are usually related to everyday
+                        experiences, work, education, family, hobbies, academic achievements, general awareness, etc.
+                    </li>
+                </div>
+                <div class="btn">
+                    <button class="show">Show More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="day5">
+            <div class="card-content">
+                <div class="ssb_info">
+                    <h2>Day 5 (Conference)</h2>
+                    <p>Day 5 is the last day the assessor starts with a closing address, then the conference of
+                        Aspirants starts.</p>
+                    <li>A board conference is conducted where all the officers who assessed the Aspirants in the
+                        previous days are present. Each assessor discusses among themselves respect to the suitability
+                        of an Aspirant.</li>
+                    <li>Each Aspirant then appears individually before the board, where their total assessment is
+                        narrated, and the committee recommends accordingly.</li>
+                    <li>The borderline Aspirants are given certain situations, and a collective decision is taken.</li>
+                    <p>After the result is announced, the shortlisted Aspirants are retained for further medical
+                        examinations.
+
+                    </p>
+                </div>
+                <div class="btn">
+                    <button class="show">Show More</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

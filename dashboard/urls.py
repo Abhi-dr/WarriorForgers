@@ -18,8 +18,11 @@ urlpatterns = [
     path('my_mentors', views.my_mentors, name='my_mentors'),
     path('mentor_videos', views.mentor_videos, name='mentor_videos'),
     
+    path('ssb_info', views.ssb_info, name='ssb_info'),
+    
     # ====================== FUNCTIONALITIES ======================
     
     path('buy_course/<int:id>', views.buy_course, name='buy_course'),
+    path('connect_mentor/<int:id>', views.connect_mentor, name='connect_mentor'),
        
 ]

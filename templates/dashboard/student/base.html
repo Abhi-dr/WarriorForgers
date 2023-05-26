@@ -26,7 +26,13 @@
     <header>
         <div class="navbar">
             <input type="text" class="search-bar" placeholder="Search" id="search-bar">
+
+            {% if student.profile_pic %}
+
             <img src="{{ student.profile_pic.url }}" class="profile-icon" alt="{% static 'img/dashboard/images.png' %}">
+            {% else %}
+            <img src="{% static 'img/dashboard/images.png' %}" class="profile-icon" alt="Profile">
+            {% endif %}
             <span class="noti-txt">Notifications</span>
             <span class="notification-icon"><i class="fa-sharp fa-solid fa-bell fa-xl"></i></span>
             <span class="search-icon" onclick="show_search()" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -63,7 +69,7 @@
                 <li class="nav-heading">Preperation</li>
                 <ul class="sub-fields">
 
-                    <li><a href="">5 Days of SSB</a></li>
+                    <li><a href="{% url 'ssb_info' %}">5 Days of SSB</a></li>
                     <li><a href="">GAT</a></li>
                     <li><a href="">WAT</a></li>
                     <li><a href="">PPDT</a></li>

@@ -1,0 +1,134 @@
+
+.test-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 50px auto;
+  }
+  
+  .card {
+    width: 100%;
+    margin-bottom: 2em;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.458);
+  }
+  
+
+  .card {
+    height: 340px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.395);
+  }
+ 
+  #day0{
+    height: 280px;
+  }
+  #day0 .ssb_info{
+    height: 240px;
+  }
+  #day2{
+    height: 430px;
+  }
+  #day2 .ssb_info{
+    height: 340px;
+  }
+  #day3{
+    height: 460px;
+  }
+  #day3 .ssb_info{
+    height: 370px;
+  }
+  #day5{
+    height: 390px;
+  }
+  #day5 .ssb_info{
+    height: 300px;
+  }
+  .card:hover{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.429);
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    padding: 20px;
+    display: block;
+  }
+  .card-content .text {
+    font-size: 20px;
+  }
+  
+  .card-footer {
+    background-color: #f3f3f3;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .show{
+    width: 120px; 
+    height: 40px;   
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-left: 420px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .show:hover{
+    border: 2px solid rgb(0, 108, 2);
+    color: rgb(0, 108, 2);
+    transform: scale(1.05);
+    transition: 0.3s
+  }
+  .ssb_info{
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    border: 1px solid black;
+  }
+
+  h1{
+    text-align: center;
+    padding-top: 40px;
+    font-size: 25px;
+  }
+  .ssb_info h2{
+    padding: 10px;
+  }
+  .ssb_info p{
+    padding: 10px;
+  }
+  .ssb_info{
+    padding: 20px;
+  }
+  
+  
+@media (max-width: 767px) {
+    .card{
+        width: 100%;
+        height: 300px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.395);
+    }
+
+    .show{
+      margin-left: 70px;
+      margin-top: 65px;
+    }
+
+    .ssb_info{
+      width: 100%;
+      height: 150px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border: 1px solid black;
+    }
+    .card-content{
+      display: block;
+    }
+}

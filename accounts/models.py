@@ -24,6 +24,8 @@ class Student(User):
     mobile_number = models.CharField(max_length=10, blank=True)
     
     registration_score = models.FloatField(default=0)
+    olq_score = models.FloatField(default=0)
+    mock_test_score = models.FloatField(default=0)
     
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=10, blank=True, choices=gender_choices)
