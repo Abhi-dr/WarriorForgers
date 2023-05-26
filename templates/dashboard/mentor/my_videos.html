@@ -12,16 +12,16 @@ My Videos
     <div class="courses">
         <h1 class="course-heading">My Videos</h1>
         <div class="my">
-            <div class="course-card">
-                <div class="video">
 
-                </div>
-            </div>
-            <div class="course-card">
-                <div class="video">
+            {% for video in videos %}
 
-                </div>
+            <div class="course-card">
+                <video controls type="video/mp4">
+                    <source src="{{ video.content.url }}" type="video/mp4">
+                </video>
             </div>
+
+            {% endfor %}
         </div>
 
     </div>

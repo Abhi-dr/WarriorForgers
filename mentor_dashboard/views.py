@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from accounts.models import Student, Course, Mentor
+from accounts.models import Student, Course, Mentor, Video
 
 
 @login_required(login_url='/accounts/login')
@@ -47,7 +47,10 @@ def mentor_my_videos(request):
     user = request.user
     mentor = get_object_or_404(Mentor, user_ptr=user)
     
+    videos = Video.objects.filter(mentor=mentor)
+    
     parameters = {
-        'mentor': mentor
+        'mentor': mentor,
+        'videos': videos
     }
     return render(request, 'dashboard/mentor/my_videos.html', parameters)

@@ -16,6 +16,7 @@ urlpatterns = [
     path('my_profile', views.my_profile, name='my_profile'),
     path('my_courses', views.my_courses, name='my_courses'),
     path('my_mentors', views.my_mentors, name='my_mentors'),
+    path('mentor_videos', views.mentor_videos, name='mentor_videos'),
     
     # ====================== FUNCTIONALITIES ======================
     

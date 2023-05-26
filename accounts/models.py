@@ -100,3 +100,16 @@ class Course(models.Model):
     
     class Meta:
         verbose_name_plural = "Courses"
+        
+class Video(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE)
+    
+    content = models.FileField(upload_to='media/video_content', blank=True)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = "Videos"

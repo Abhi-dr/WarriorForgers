@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Mentor, Course
+from .models import Student, Mentor, Course, Video
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -16,4 +16,7 @@ class MentorAdmin(admin.ModelAdmin):
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'price')
 
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'mentor')
     
