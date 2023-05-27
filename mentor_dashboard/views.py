@@ -54,3 +54,16 @@ def mentor_my_videos(request):
         'videos': videos
     }
     return render(request, 'dashboard/mentor/my_videos.html', parameters)
+
+@login_required(login_url='/accounts/login')
+def mentor_registered_students(request):
+    user = request.user
+    mentor = get_object_or_404(Mentor, user_ptr=user)
+    
+    students = Student.objects.filter(mentor=mentor)
+    
+    parameters = {
+        'mentor': mentor,
+        'students': students
+    }
+    return render(request, 'dashboard/mentor/registered_students.html', parameters)
