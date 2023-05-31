@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from accounts.models import Student, Course, Mentor, Video
+from dashboard.models import Meeting
 
 
 @login_required(login_url='/accounts/login')
@@ -25,11 +26,13 @@ def home(request):
         
         courses = student.courses.all()
         left_mentors = Mentor.objects.exclude(id__in=student.mentors.all().values_list('id'))
+        meeetings = Meeting.objects.filter(student=student)[::-1]
         
         parameters = {
         'student': student,
         'courses': courses,
-        'left_mentors': left_mentors
+        'left_mentors': left_mentors,
+        'meetings': meeetings
     }
         
         return render(request, 'dashboard/student/home.html', parameters)
@@ -43,8 +46,26 @@ def request_meeting(request):
     user = request.user
     student = get_object_or_404(Student, user_ptr=user)
     
+    mentors = student.mentors.all()
+    
+    if request.method == "POST":
+        
+        domain = request.POST.get('domain')
+        mentor_id = request.POST.get('mentor_id')
+        question = request.POST.get('question')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        
+        mentor = get_object_or_404(Mentor, id=mentor_id)
+        
+        meeting = Meeting(student=student, mentor=mentor, date=date, time=time, question=question, domain=domain)
+        meeting.save()
+        
+        return redirect('request_meeting')
+    
     parameters = {
-        'student': student
+        'student': student,
+        'mentors': mentors
     }
     
     return render(request, 'dashboard/student/request_meeting.html', parameters)
@@ -53,9 +74,34 @@ def request_meeting(request):
 
 @login_required(login_url='/accounts/login')
 def my_profile(request):
-            
+    
     user = request.user
     student = get_object_or_404(Student, user_ptr=user)
+    
+    if request.method == "POST":
+        
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobile_number = request.POST.get('mobile_number')
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        highschool_score = request.POST.get('hignschool_score')
+        intermediate_score = request.POST.get('intermediate_score')
+        
+        student.first_name = first_name
+        student.last_name = last_name
+        student.email = email
+        student.mobile_number = mobile_number
+        student.age = age
+        student.gender = gender
+        student.highschool_score = highschool_score
+        student.intermediate_score = intermediate_score
+        
+        student.save()
+        
+        return redirect('my_profile')
+            
     
     parameters = {
         'student': student
@@ -171,4 +217,19 @@ def ssb_info(request):
             'student': student
         }
         
-        return render(request, 'dashboard/student/ssb_info.html', parameters)   
+        return render(request, 'dashboard/student/ssb_info.html', parameters)
+    
+# ================================ EDIT PROFILE ================================
+
+@login_required(login_url='/accounts/login')
+def edit_profile(request):
+                
+    user = request.user
+    student = get_object_or_404(Student, user_ptr=user)
+    
+    
+    parameters = {
+        'student': student
+    }
+    
+    return render(request, 'dashboard/student/edit_profile.html', parameters)

@@ -1,0 +1,77 @@
+
+svg {
+    display: inline-flex;
+    vertical-align: bottom;
+    width: 200px;
+    height: 200px;
+
+     
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+svg:hover{
+  transform: rotateX(10deg) rotateY(10deg) scale(1.15);
+}
+
+circle {
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 5px;
+    stroke-dasharray: 0;
+    fill: none;
+}
+
+.meter {
+    stroke-width: 5px;
+    stroke: #fff;
+    fill: none;
+    transition: stroke-dashoffset 1s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+    transform-origin: center center;
+    transform: rotate(-90deg) scaleX(-1);
+}
+
+text {
+    fill: #fff;
+    font-weight: bold;
+}
+
+
+/* Card container styles */
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Card styles */
+
+.card {
+    background: linear-gradient(90deg, #0a2588b9, #0073ffb5);
+    border-radius: 8px;
+    box-shadow: -1px 3px 12px #0a258882;
+    flex-basis: calc(33.33% - 20px);
+    margin-top: 2%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    text-align: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    position: relative;
+    aspect-ratio: 3/1;
+   
+
+    /* Set the aspect ratio to 1:1 for square shape */
+}
+
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+    .card-container {
+        flex-wrap: wrap;
+    }
+    .card {
+        flex-basis: 100%;
+    }
+}

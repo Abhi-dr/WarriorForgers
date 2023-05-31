@@ -6,29 +6,148 @@ Dashboard
 {% endblock %}
 
 {% block mylink %}
-<link rel="stylesheet" href="{% static 'css/student_dashboard/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard/dashboard_mobile.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard/score_display.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard/crud_table.css' %}">
 {% endblock %}
 
 {% block main %}
 
-<h1 id="result">Results</h1>
-<div class="section-score">
+<section>
 
-    <div class="circle-ring" id="circle1">
-        <div class="score">{{ student.registration_score }}%</div>
-    </div>
-    <span class="score-head">Registration Score</span>
+    <div class="main-container">
 
-    <div class="circle-ring" id="circle2">
-        <div class="score">{{ student.olq_score }}%</div>
-    </div>
-    <span class="score-head">OLQ Score</span>
+        <div class="card-container">
+            <div class="card">
+                <!-- Change data-value in svg element to impact progress -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+                    data-value="{{ student.registration_score }}">
+                    <circle r="45" cx="50" cy="50" />
+                    <!-- 282.78302001953125 is auto-calculated by path.getTotalLength() -->
+                    <path class="meter" d="M5,50a45,45 0 1,0 90,0a45,45 0 1,0 -90,0" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-dashoffset="282.78302001953125"
+                        stroke-dasharray="282.78302001953125" />
+                    <!-- Value automatically updates based on data-value set above -->
+                    <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="20"></text>
+                </svg>
 
-    <div class="circle-ring" id="circle3">
-        <div class="score">{{ student.mock_test_score }}%</div>
+                <h3 style="color:aliceblue; text-align: center;">
+                    Registration Score
+                </h3>
+
+            </div>
+
+            <div class="card">
+                <!-- Change data-value in svg element to impact progress -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+                    data-value="{{ student.olq_score }}">
+                    <circle r="45" cx="50" cy="50" />
+                    <!-- 282.78302001953125 is auto-calculated by path.getTotalLength() -->
+                    <path class="meter" d="M5,50a45,45 0 1,0 90,0a45,45 0 1,0 -90,0" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-dashoffset="282.78302001953125"
+                        stroke-dasharray="282.78302001953125" />
+                    <!-- Value automatically updates based on data-value set above -->
+                    <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="20"></text>
+                </svg>
+
+                <h3 style="color:aliceblue; text-align: center;">
+                    OLQ Score
+                </h3>
+
+            </div>
+
+            <div class="card">
+                <!-- Change data-value in svg element to impact progress -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+                    data-value="{{ student.mock_test_score }}">
+                    <circle r="45" cx="50" cy="50" />
+                    <!-- 282.78302001953125 is auto-calculated by path.getTotalLength() -->
+                    <path class="meter" d="M5,50a45,45 0 1,0 90,0a45,45 0 1,0 -90,0" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-dashoffset="282.78302001953125"
+                        stroke-dasharray="282.78302001953125" />
+                    <!-- Value automatically updates based on data-value set above -->
+                    <text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="20"></text>
+                </svg>
+
+                <h3 style="color:aliceblue; text-align: center;">
+                    Mock Test Score
+                </h3>
+
+            </div>
+        </div>
+
     </div>
-    <span class="score-head">Mock Test Score</span>
-</div>
+
+</section>
+
+<section>
+
+    <div class="main-container-2">
+        <div class="container">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <h2><b>YOUR MEETINGS</b></h2>
+                            </div>
+
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>MEETING ID</th>
+                                <th>DOMAIN</th>
+                                <th>QUESTION</th>
+                                <th>MENTOR</th>
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for meeting in meetings %}
+
+                            <tr>
+                                <td>{{ meeting.id }}</td>
+                                <td>{{ meeting.domain }}</td>
+                                <td>{{ meeting.question|truncatechars:40 }}</td>
+                                <td>{{ meeting.mentor }}</td>
+                                <td>{{ meeting.date }}</td>
+                                <td>{{ meeting.time }}</td>
+
+                                {% if meeting.approved %}
+
+                                <td class="start_now" style="width: 14%;"><span
+                                        class="status text-success">&bull;</span>
+                                    <a href="#" style="text-decoration: none;">
+                                        Approved
+                                    </a>
+                                </td>
+
+                                {% else %}
+
+
+                                <td style="width: 14%;"><span class="status text-danger">&bull;</span>Not Approved</td>
+
+                                {% endif %}
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
 <div class="courses_dashboard">
     <h1>Your Courses</h1>
     <div class="test-selector">
@@ -59,7 +178,8 @@ Dashboard
                 <div class="my-course">
                     <img src="{{ mentor.profile_pic.url }}" alt="">
                     <a style="text-decoration:none ;" href="{% url 'connect_mentor' mentor.id %}">
-                        <button class="course-btn" id="view_btn" onclick="return confirm('Do you want to add this Mentor?');">Connect</button>
+                        <button class="course-btn" id="view_btn"
+                            onclick="return confirm('Do you want to add this Mentor?');">Connect</button>
                     </a>
                 </div>
             </div>
@@ -79,9 +199,9 @@ Dashboard
                 <div class="btn">
                     <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
                         <button class="start_now">
-                          Start Now
+                            Start Now
                         </button>
-                      </a>
+                    </a>
                 </div>
             </div>
             <div class="olq-footer">
@@ -97,9 +217,9 @@ Dashboard
                 <div class="btn">
                     <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
                         <button class="start_now">
-                          Start Now
+                            Start Now
                         </button>
-                      </a>
+                    </a>
                 </div>
             </div>
             <div class="olq-footer">
@@ -115,9 +235,9 @@ Dashboard
                 <div class="btn">
                     <a style="text-decoration:none ;" href="{% url 'olq_instructions' %}">
                         <button class="start_now">
-                          Start Now
+                            Start Now
                         </button>
-                      </a>
+                    </a>
                 </div>
             </div>
             <div class="olq-footer">
@@ -126,5 +246,11 @@ Dashboard
         </div>
     </div>
 </div>
+
+{% block myscript %}
+<script src="{% static 'js/dashboard/student/home.js' %}"></script>
+
+{% endblock %}
+
 
 {% endblock %}

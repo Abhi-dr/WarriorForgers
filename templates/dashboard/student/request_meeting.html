@@ -16,15 +16,20 @@ Request A Meeting
         font-family: Arial, sans-serif;
     }
 
+    body{
+        background-color: #f1f1f1;
+    }
+
     .container-2 {
         width: 78%;
         margin: 8% auto;
+        margin-bottom: 3%;
         position: absolute;
         right: 2em;
         background-color: #fff;
         padding: 25px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.249);
     }
 
     .container-2 h1 {
@@ -129,7 +134,11 @@ Request A Meeting
 {% block main %}
 <div class="container-2">
     <h1>Request a Meeting</h1>
-    <form>
+
+    <form method="post">
+
+        {% csrf_token %}
+        
         <div class="form-group">
             <label for="domain">Domain</label>
             <select id="domain" name="domain">
@@ -139,19 +148,24 @@ Request A Meeting
                 <!-- Add more options here -->
             </select>
         </div>
+        
         <div class="form-group">
             <label for="mentor">Mentor</label>
-            <select id="mentor" name="mentor">
+            <select id="mentor" name="mentor_id">
                 <option value="" disabled selected>Select Mentor</option>
-                <option value="mentor1">Mentor 1</option>
-                <option value="mentor2">Mentor 2</option>
+                
+                {% for mentor in mentors %}
+                <option value="{{ mentor.id }}">{{ mentor.first_name}} {{ mentor.last_name }}</option>
+                {% endfor %}
                 <!-- Add more options here -->
             </select>
         </div>
+
         <div class="form-group">
             <label for="question">Question</label>
             <textarea id="question" name="question" placeholder="Enter your question"></textarea>
         </div>
+
         <div class="form-group">
             <label for="file">Relevant File</label>
             <div class="file-upload">
@@ -160,6 +174,7 @@ Request A Meeting
                 <span id="file-name"></span>
             </div>
         </div>
+
         <div class="form-group">
             <label for="date">Date and Time</label>
             <div class="datetime-group">
@@ -167,9 +182,11 @@ Request A Meeting
                 <input type="time" id="time" name="time" class="datetime-input">
             </div>
         </div>
+
         <div class="form-group">
             <button type="submit" class="btn-submit">Request a Meeting</button>
         </div>
+
     </form>
 </div>
 
